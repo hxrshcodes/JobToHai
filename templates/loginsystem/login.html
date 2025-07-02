@@ -19,13 +19,13 @@
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
                 <h1 class="opacity">LOGIN</h1>
-                <form action="login.php" method="POST">
+                <form action="" method="post">
                     {% csrf_token %} <!-- Adjust action if using other backend -->
                     <!-- Role Selection -->
                     <select name="role" required>
                         <option value="" disabled selected>Select Role</option>
-                        <option value="candidate" class="newoption">Candidate</option>
-                        <option value="company" class="newoption">Company</option>
+                        <option value="Candidate" class="newoption">Candidate</option>
+                        <option value="Company" class="newoption">Company</option>
                     </select>
                     <input type="email" name="email" placeholder="EMAIL" required />
                     <input type="password" name="password" placeholder="PASSWORD" required />
