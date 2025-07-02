@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64">
+  <defs/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M4.5 15h55M16 9.5v6M21.5 12h20M7.5 12h1M9.5 12h1M11.5 12h1"/>
+  <path stroke="#00B7CD" stroke-miterlimit="10" d="M15.5 24h33M15.5 28h18M35.5 28h1"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M18 55.5V38h2.5"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M10.9 45.58L4 43.5V9h55v46H45V38h2.5"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M32.1 43.51L39 45.6V38h6.5"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M34.5 38H32v17H11V38h2.5"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M25 55.5V38h2.5M52 55.5V38h2.5M22 46.5v7M22 43.5v1M22 40.5v1M29 46.5v7M29 43.5v1M29 40.5v1M49 46.5v7M49 43.5v1M49 40.5v1M36 43.5v1M36 40.5v1M8 43.5v1M8 40.5v1M56 46.5v7M56 43.5v1M56 40.5v1M15 46.5v7M15 43.5v1M15 40.5v1"/>
+</svg>

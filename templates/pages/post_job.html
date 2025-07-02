@@ -1,0 +1,113 @@
+{% include 'include/base.html' %}
+{% include 'include/header.html' %}
+{% load static %}
+
+<!-- HERO SECTION -->
+<div class="container-boot pt-3 pb-5">
+    <div class="row">
+        <div class="col-lg-6 pt-md-5 pt-lg-5 pt-0">
+            <h1 class="display-3 fw-semibold">Post A <span style="color: var(--first-color);">Job</span></h1>
+            <p class="mt-3">
+                <span class="fw-semibold">Welcome to our Job Posting page</span>
+                <br><br>
+                Connect with talented candidates eager to join your team. Our platform simplifies the hiring process,
+                allowing you to create and manage job listings that effectively showcase your company culture and
+                values.
+                <br><br>
+                To attract the right talent, be clear about job responsibilities and highlight what sets your company
+                apart. Engaging promptly with inquiries can foster interest and help you build a positive impression.
+                <br><br>
+                Start building your dream team today by filling out the form below and connecting with the candidates
+                who will help drive your business forward!
+            </p>
+        </div>
+        <div class="col-lg-6 pt-md-5 pt-lg-5 pt-0">
+            <div class=""><img src="{% static 'images/postjob.gif' %}" alt=""
+                    class="pt-5 img-fluid w-75 mx-auto d-block"></div>
+        </div>
+    </div>
+
+</div>
+
+<h3 class="container-boot">Post a New Job</h3>
+<div class="container-boot border border-1 border-dark p-3">
+    1. Job Details
+</div>
+<form action="" method="post" class="mt-3">
+<div class="container-boot p-4 mt-3 border border-1 border-dark">
+    <h5>Job Title</h5>
+    <span class="text-muted" style="font-size: 12px;">We use this information to find the best candidates for the job.</span><br>
+    <span class="text-danger" style="font-size: 13px;">*Marked fields are mandatory</span><br><br>
+        {% csrf_token %}
+        <label for="company_name">Name of the Company<span class="text-danger">*</span></label>
+        <input type="text" name="company_name" id="company_name" class="form-control mt-2 w-75 shadow-none" placeholder="e.g. Google">
+        <label for="job_title" class="mt-3">Job Title/Designation<span class="text-danger">*</span></label>
+        <input type="text" name="job_title" id="job_title" class="form-control mt-2 w-50 shadow-none" placeholder="e.g. Software Engineer">
+        <label for="job_type" class="mt-3">Job Type<span class="text-danger">*</span></label>
+        <select name="job_type" id="job_type" class="form-select mt-2 w-25 shadow-none">
+            <option value="full_time">Full Time</option>
+            <option value="part_time">Part Time</option>
+            <option value="internship">Internship</option>
+        </select>
+    </div>
+
+<div class="container-boot p-4 mt-3 border border-1 border-dark">
+    <h5>Location</h5>
+    <p class="text-muted" style="font-size: 12px;">Let the candidates know where they will be working</p>
+    <label for="location">Location<span class="text-danger">*</span></label>
+    <input type="text" name="location" id="location" class="form-control mt-2 w-50 shadow-none" placeholder="e.g. New Delhi, India">
+    <label for="remote" class="mt-3">Work Location Type<span class="text-danger">*</span></label>
+    <select name="remote" id="remote" class="form-select mt-2 w-25 shadow-none">
+        <option selected disabled class="text-muted">Select</option>
+        <option value="office">Work from Office</option>
+        <option value="home">Work from Home</option>
+        <option value="field">Field Work</option>
+    </select>
+</div>
+
+<div class="container-boot p-4 mt-3 border border-1 border-dark">
+    <h5>Compensation</h5>
+    <p class="text-muted" style="font-size: 12px;">Let the candidates know about the compensation and benefits</p>
+    
+    <label for="salary" class="mt-3">Salary<span class="text-danger">*</span></label>
+    <input type="text" name="salary" id="salary" class="form-control mt-2 w-50 shadow-none" placeholder="e.g. 10,000 - 20,000 per month">
+    
+    <label for="salary_type" class="mt-3">Salary Type<span class="text-danger">*</span></label>
+    <select name="salary_type" id="salary_type" class="form-select mt-2 w-25 shadow-none">
+        <option selected disabled class="text-muted">Select</option>
+        <option value="fixed">Fixed</option>
+        <option value="fixed_plus_incentive">Fixed + Incentive</option>
+    </select>
+    
+    <label for="additional_benefits" class="mt-3">Additional Benefits</label>
+    <div id="benefits-container">
+        <div class="benefit-item">
+            <input type="text" name="additional_benefits[]" class="form-control mt-2 shadow-none w-25 mb-2" placeholder="e.g. Health Insurance etc.">
+        </div>
+    </div>
+    <button type="button" id="add-benefit" class="btn btn-sm btn-secondary mt-2">Add Another Benefit</button>
+</div>
+</form>
+
+<script>
+    // Add event listener for the "Add Another Benefit" button
+    document.getElementById('add-benefit').addEventListener('click', function() {
+        const benefitsContainer = document.getElementById('benefits-container');
+        
+        // Create a new div element to hold the new benefit input
+        const newBenefitItem = document.createElement('div');
+        newBenefitItem.classList.add('benefit-item');
+        
+        // Create a new input field for the new benefit
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.name = 'additional_benefits[]';
+        newInput.classList.add('form-control', 'mt-2', 'w-25', 'shadow-none', 'mb-2');
+        newInput.placeholder = 'e.g. Health Insurance etc.';
+        
+        // Append the new input field to the container
+        newBenefitItem.appendChild(newInput);
+        benefitsContainer.appendChild(newBenefitItem);
+    });
+</script>
+{% include 'include/footer.html' %}

@@ -1,0 +1,374 @@
+<!-- HEADER -->
+<header class="header">
+    <nav class="nav container">
+        <div class="nav__data">
+            <a href="{% url 'index' %}" class="nav__logo">
+                <i class="ri-briefcase-2-line"></i> JobHai
+            </a>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-line nav__toggle-menu"></i>
+            <i class="ri-close-line nav__toggle-close ms-auto"></i>
+        </div>
+
+        <!-- NAV MENU -->
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li>
+                    <a href="{% url 'index' %}" class="nav__link">Home</a>
+                </li>
+
+                <!-- DROPDOWN 1 -->
+                <li class="dropdown__item">
+                    <div class="nav__link dropdown__button">
+                        Discover <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-flashlight-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Most viewed Jobs</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="{% url 'jobs' %}" class="dropdown__link">IT Jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'jobs' %}" class="dropdown__link">Sales Job</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'jobs' %}" class="dropdown__link">Marketing Jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'jobs' %}" class="dropdown__link">Data Science Jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'jobs' %}" class="dropdown__link">HR Jobs</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-heart-3-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Popular Jobs</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Fresher jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">MNC jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Remote jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Work from home jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Part-time jobs</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-book-mark-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Company</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Review Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="post_job.html" class="dropdown__link">Post a job</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">UI/UX design</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Informatic security</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-file-paper-2-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Explore collection</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Top Companies</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">IT Companies</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">MNC Companies</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Sponsored Companies</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- DROPDOWN 2 -->
+                {% if request.session.role == 'Candidate' %}
+                <li class="dropdown__item">
+                    <div class="nav__link dropdown__button">
+                        Resources <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-article-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Resume Writing</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Text Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'resume' %}" class="dropdown__link">Visual Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Resume Critique</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-creative-commons-nc-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Free Resources</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Jobs near me</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Resume quality score</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Job letter sample</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-apps-2-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Others</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Recent blogs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Tutorial videos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Webinar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% elif request.session.role == 'Company' %}
+                <li class="dropdown__item">
+                    <div class="nav__link dropdown__button">
+                        Resources <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-article-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Post Jobs</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="{% url 'post_job' %}" class="dropdown__link">Post Jobs</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% else %}
+                <li class="dropdown__item">
+                    <div class="nav__link dropdown__button">
+                        Resources <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-article-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Resume Writing</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Text Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'resume' %}" class="dropdown__link">Visual Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Resume Critique</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-creative-commons-nc-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Free Resources</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Jobs near me</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Resume quality score</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Job letter sample</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-apps-2-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Others</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Recent blogs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Tutorial videos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Webinar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+
+                <li>
+                    <a href="{% url 'pricing' %}" class="nav__link">Pricing</a>
+                </li>
+
+                <!-- DROPDOWN 3 -->
+                {% if request.session.role == 'Candidate' or request.session.role == 'Company' %}
+                <li class="dropdown__item">
+                    <div class="nav__link dropdown__button">
+                        My Profile <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-community-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">My Account</span>
+
+                                <ul class="dropdown__list">
+                                    {% if request.session.role == 'Candidate' %}
+                                    <li>
+                                        <a href="#" class="dropdown__link">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">View Resume</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Applied Jobs</a>
+                                    </li>
+                                    {% elif request.session.role == 'Company' %}
+                                    <li>
+                                        <a href="#" class="dropdown__link">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'post_job' %}" class="dropdown__link">Post Jobs</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">View Applicants</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-shield-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Others</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">About us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+                {% if request.session.role == 'Candidate' or request.session.role == 'Company' %}
+                <li>
+                    <a href="{% url 'logout' request.session.id %}" class="nav__link">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}" class="nav__link">Login/Signup</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <title>Resume Builder</title>
+</head>
+{% include 'include/onlynav.html' %}
+
+<body>
+    <section id="about-sc" class="pt-0">
+        <div class="container-fluid">
+            <div class="about-cnt">
+                <form action="{% url 'makeresume' %}" class="cv-form bg-light p-5" id="cv-form" method="post">
+                    {% csrf_token %}
+                    <h1 class="text-center display-5 fw-semibold">Resume Builder</h1>
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Personal Information</h3>
+                        </div>
+                        <div class="cv-form-row cv-form-row-about">
+                            <div class="cols-3">
+                                <div class="form-elem">
+                                    <label for="" class="form-label">First Name <span
+                                            class="text-danger">*</span></label>
+                                    <input required name="firstname" type="text"
+                                        class="form-control firstname shadow-none" placeholder="e.g. John">
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Middle Name <span
+                                            class="opt-text">(optional)</span></label>
+                                    <input name="middlename" type="text" class="form-control middlename shadow-none"
+                                        placeholder="e.g. Herbert">
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Last Name <span
+                                            class="text-danger">*</span></label>
+                                    <input required name="lastname" type="text"
+                                        class="form-control lastname shadow-none" placeholder="e.g. Doe">
+                                    <span class="form-text"></span>
+                                </div>
+                            </div>
+
+                            <div class="cols-3">
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Your Image <span
+                                            class="text-danger">*</span></label>
+                                    <input required name="image" type="file" class="form-control image shadow-none"
+                                        accept="image/*" onchange="previewImage()">
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Designation <span
+                                            class="text-danger">*</span></label>
+                                    <input required name="designation" type="text"
+                                        class="form-control designation shadow-none" placeholder="e.g. Sr.Accountant">
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Address <span class="text-danger">*</span></label>
+                                    <input required name="address" type="text" class="form-control address shadow-none"
+                                        placeholder="e.g. Lake Street-23">
+                                    <span class="form-text"></span>
+                                </div>
+                            </div>
+
+                            <div class="cols-3">
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input required name="email" type="text" class="form-control email shadow-none"
+                                        placeholder="e.g. johndoe@gmail.com">
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Phone No <span class="text-danger">*</span></label>
+                                    <input required name="phoneno" type="text" class="form-control phoneno shadow-none"
+                                        placeholder="e.g. 456-768-798, 567.654.002">
+                                    <span class="form-text"></span>
+                                </div>
+                                <div class="form-elem">
+                                    <label for="" class="form-label">Summary <span class="text-danger">*</span></label>
+                                    <input required name="summary" type="text" class="form-control summary shadow-none"
+                                        placeholder="e.g. Summary here">
+                                    <span class="form-text"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Section -->
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Achievements</h3>
+                        </div>
+                        <div class="row-separator repeater">
+                            <div class="repeater" data-repeater-list="achievements">
+                                <div data-repeater-item>
+                                    <div class="cv-form-row cv-form-row-achievement">
+                                        <div class="cols-2">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Title</label>
+                                                <input name="achieve_title" type="text"
+                                                    class="form-control achieve_title shadow-none"
+                                                    placeholder="e.g. Award Title">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Description</label>
+                                                <input name="achieve_description" type="text"
+                                                    class="form-control achieve_description shadow-none"
+                                                    placeholder="e.g. Achievement Description">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <button data-repeater-delete type="button"
+                                            class="repeater-remove-btn mt-3 btn btn-danger"
+                                            style="display: none; position: absolute; top: 0; right: 10px;">-</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-repeater-create
+                                class="repeater-add mt-5 btn btn-primary">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Experience Section -->
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Experience</h3>
+                        </div>
+                        <div class="row-separator repeater">
+                            <div class="repeater" data-repeater-list="experience">
+                                <div data-repeater-item>
+                                    <div class="cv-form-row cv-form-row-experience">
+                                        <div class="cols-3">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Title</label>
+                                                <input name="exp_title" type="text"
+                                                    class="form-control exp_title shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Company / Organization</label>
+                                                <input name="exp_organization" type="text"
+                                                    class="form-control exp_organization shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Location</label>
+                                                <input name="exp_location" type="text"
+                                                    class="form-control exp_location shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cols-3">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Start Date</label>
+                                                <input name="exp_start_date" type="date"
+                                                    class="form-control exp_start_date shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">End Date</label>
+                                                <input name="exp_end_date" type="date"
+                                                    class="form-control exp_end_date shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Description</label>
+                                                <input name="exp_description" type="text"
+                                                    class="form-control exp_description shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <button data-repeater-delete type="button"
+                                            class="repeater-remove-btn mt-3 btn btn-danger"
+                                            style="display: none; position: absolute; top: 0; right: 10px;">-</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-repeater-create
+                                class="repeater-add mt-5 btn btn-primary">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Education Section -->
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Education</h3>
+                        </div>
+                        <div class="row-separator repeater">
+                            <div class="repeater" data-repeater-list="education">
+                                <div data-repeater-item>
+                                    <div class="cv-form-row cv-form-row-education">
+                                        <div class="cols-3">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">School <span
+                                                        class="text-danger">*</span></label>
+                                                <input required name="edu_school" type="text"
+                                                    class="form-control edu_school shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Degree <span
+                                                        class="text-danger">*</span></label>
+                                                <input required name="edu_degree" type="text"
+                                                    class="form-control edu_degree shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">City <span
+                                                        class="text-danger">*</span></label>
+                                                <input required name="edu_city" type="text"
+                                                    class="form-control edu_city shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cols-3">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Start Date <span
+                                                        class="text-danger">*</span></label>
+                                                <input required name="edu_start_date" type="date"
+                                                    class="form-control edu_start_date shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">End Date <span
+                                                        class="text-danger">*</span></label>
+                                                <input required name="edu_graduation_date" type="date"
+                                                    class="form-control edu_graduation_date shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Description</label>
+                                                <input name="edu_description" type="text"
+                                                    class="form-control edu_description shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <button data-repeater-delete type="button"
+                                            class="repeater-remove-btn mt-3 btn btn-danger"
+                                            style="display: none; position: absolute; top: 0; right: 10px;">-</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-repeater-create
+                                class="repeater-add mt-5 btn btn-primary">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Projects</h3>
+                        </div>
+                        <div class="row-separator repeater">
+                            <div class="repeater" data-repeater-list="projects">
+                                <div data-repeater-item>
+                                    <div class="cv-form-row cv-form-row-projects">
+                                        <div class="cols-3">
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Project Name</label>
+                                                <input name="proj_title" type="text"
+                                                    class="form-control proj_title shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Project Link</label>
+                                                <input name="proj_link" type="text"
+                                                    class="form-control proj_link shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            <div class="form-elem">
+                                                <label for="" class="form-label">Description</label>
+                                                <input name="proj_description" type="text"
+                                                    class="form-control proj_description shadow-none">
+                                                <span class="form-text"></span>
+                                            </div>
+                                        </div>
+                                        <button data-repeater-delete type="button"
+                                            class="repeater-remove-btn mt-3 btn btn-danger"
+                                            style="display: none; position: absolute; top: 0; right: 10px;"><i
+                                                class="ri-subtract-line"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-repeater-create
+                                class="repeater-add mt-5 btn btn-primary">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="cv-form-blk">
+                        <div class="cv-form-row-title">
+                            <h3>Skills</h3>
+                        </div>
+                        <div class="row-separator repeater">
+                            <div class="repeater" data-repeater-list="skills">
+                                <div data-repeater-item>
+                                    <div class="cv-form-row cv-form-row-skills">
+                                        <div class="form-elem">
+                                            <label for="" class="form-label">Skill <span
+                                                    class="text-danger">*</span></label>
+                                            <input required name="skill" type="text"
+                                                class="form-control skill shadow-none">
+                                            <span class="form-text"></span>
+                                        </div>
+                                        <button data-repeater-delete type="button"
+                                            class="repeater-remove-btn mt-3 btn btn-danger"
+                                            style="display: none; position: absolute; top: 0; right: 10px;"><i
+                                                class="ri-subtract-line"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" data-repeater-create
+                                class="repeater-add mt-5 btn btn-primary">+</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="print-btn btn btn-outline-primary px-5 py-2"
+                        style="font-size: 18px;">Print CV</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="print-btn-sc">
+        <div class="container text-center">
+        </div>
+    </section>
+
+    <!--<section id = "preview-sc" class = "print_area">
+        <h2 class="text-center fw-semibold">Review Your Resume</h2>
+        <div class = "container">
+            <div class = "preview-cnt">
+                <div class = "preview-cnt-l bg-green text-white">
+                    <div class = "preview-blk">
+                        <div class = "preview-image">
+                            <img src = "" alt = "" id = "image_dsp"> 
+                        </div>
+                        <div class = "preview-item preview-item-name">
+                            <span class = "preview-item-val fw-6" id = "fullname_dsp"></span>
+                        </div>
+                        <div class = "preview-item">
+                            <span class = "preview-item-val text-uppercase fw-6 ls-1" id = "designation_dsp"></span>
+                        </div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>about</h3>
+                        </div>
+                        <div class = "preview-blk-list">
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "phoneno_dsp"></span>
+                            </div>
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "email_dsp"></span>
+                            </div>
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "address_dsp"></span>
+                            </div>
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "summary_dsp"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>skills</h3>
+                        </div>
+                        <div class = "skills-items preview-blk-list" id = "skills_dsp">
+                
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "preview-cnt-r bg-white">
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>Achievements</h3>
+                        </div>
+                        <div class = "achievements-items preview-blk-list" id = "achievements_dsp"></div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>educations</h3>
+                        </div>
+                        <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>experiences</h3>
+                        </div>
+                        <div class = "experiences-items preview-blk-list" id = "experiences_dsp"></div>
+                    </div>
+
+                    <div class = "preview-blk">
+                        <div class = "preview-blk-title">
+                            <h3>projects</h3>
+                        </div>
+                        <div class = "projects-items preview-blk-list" id = "projects_dsp"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to add new item
+            function addItem(repeaterSelector) {
+                const repeater = document.querySelector(repeaterSelector);
+                const newItem = repeater.querySelector("[data-repeater-item]").cloneNode(true);
+                clearInputs(newItem);
+                const deleteButton = newItem.querySelector("[data-repeater-delete]");
+                deleteButton.style.display = "inline"; // Show the delete button
+
+                // Add class for animation
+                newItem.classList.add('repeater-item');
+                repeater.appendChild(newItem);
+
+                // Trigger reflow to apply animation
+                requestAnimationFrame(() => {
+                    newItem.classList.add('show');
+                });
+            }
+
+            // Function to clear input fields of a cloned item
+            function clearInputs(item) {
+                const inputs = item.querySelectorAll("input");
+                inputs.forEach(input => {
+                    input.value = "";
+                });
+            }
+
+            // Function to delete an item with animation
+            function deleteItem(button) {
+                const item = button.closest("[data-repeater-item]");
+                item.classList.add('fade-out'); // Start the fade-out animation
+
+                // Wait for the animation to complete before removing the item
+                item.addEventListener('transitionend', () => {
+                    item.remove();
+                });
+            }
+
+            // Event delegation for adding and deleting fields
+            document.addEventListener("click", function (event) {
+                if (event.target.matches("[data-repeater-create]")) {
+                    const repeaterSelector = event.target.closest(".row-separator").querySelector(".repeater").dataset.repeaterList;
+                    addItem(`[data-repeater-list='${repeaterSelector}']`);
+                }
+
+                if (event.target.matches("[data-repeater-delete]")) {
+                    deleteItem(event.target);
+                }
+            });
+
+            // Hide delete button for the first item in each repeater
+            const repeaters = document.querySelectorAll(".repeater");
+            repeaters.forEach(repeater => {
+                const firstItem = repeater.querySelector("[data-repeater-item]");
+                const deleteButton = firstItem.querySelector("[data-repeater-delete]");
+                deleteButton.style.display = "none"; // Hide the delete button for the first item
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

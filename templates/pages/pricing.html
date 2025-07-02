@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Pricing Page</title>
+</head>
+
+<body style="background-color:  var(--body-color);">
+
+    {% include 'include/header.html' %}
+
+    <!-- BANNER -->
+    <div class="container-fluid pt-3 pb-5"
+        style="background-image: url('{% static 'images/bn2.jpg' %}'); background-size: cover; min-height: 60vh; display: flex; justify-content: center; align-items: center;">
+        <h1 class="fw-bold display-3" style="color: var(--first-color);">Check Out Our Pricing</h1>
+    </div>
+
+
+
+    <!-- CARDS -->
+    <div class="container-boot mt-5 py-2">
+        <h1 class="text-center fw-bold display-5" style="color: var(--title-color);">Pricing Packages </h1>
+        <p class="text-center " style="color: var(--text-color);">Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Vel, hic laboriosam doloremque illo corrupti sint
+            assumenda similique iusto quibusdam totam voluptate, nulla harum! Deleniti harum, sequi unde nesciunt
+            eligendi ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, hic laboriosam doloremque
+            illo corrupti sint
+            assumenda similique iusto quibusdam totam voluptate, nulla harum! Deleniti harum, sequi unde nesciunt
+            eligendi ratione.
+        </p>
+        <!-- <div class="mt-5" style="display: flex; justify-content: center;">
+            <p class="border border-3 px-5 py-1 rounded-5">Month</p>
+            <p class="border border-3 px-5 py-1 rounded-5">Annually <span class="px-3 py-1" style="background-color: aliceblue;">Save 20%</span></p>
+        </div> -->
+        <div class="pricing-cards row mt-3 pt-5">
+            <div class="card col-lg-4">
+                <h2>Free</h2>
+                <p class="price">$0/2-Week</p>
+                <button class="btn">Get start for free</button>
+                <ul class="mt-3" style="border-top: 2px dotted black;">
+                    <p class="mt-4 fw-bold">Start Plan Includes</p>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 2</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 3</li>
+
+                </ul>
+
+            </div>
+            <div class="card col-lg-4">
+                <h2>Standard Plane</h2>
+                <p class="price">$10/3-Month</p>
+                <button class="btn">Get start for Standard Plane</button>
+                <ul class="mt-3" style="border-top: 2px dotted black;">
+                    <p class="mt-4 fw-bold">Start Plan Includes</p>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 2</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 3</li>
+
+                </ul>
+
+            </div>
+            <div class="card col-lg-4">
+                <h2>Prinuim Plan</h2>
+                <p class="price">$25/1-Year</p>
+                <button class="btn">Get start for Prinuim Pland</button>
+                <ul class="mt-3" style="border-top: 2px dotted black;">
+                    <p class="mt-4 fw-bold">Start Plan Includes</p>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 2</li>
+                    <li class="py-2" style="color: var(--text-color);">Up to 25 bloks 3</li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- slider -->
+    <div class="container-boot pt-5 pb-5">
+        <p class="pt-5 fs-4 text-center" style="color: var(--title-color);">Trusted by 50,000+ businesses to scale
+            outbound sales and drive new revenue</p>
+        <div class="logos-slider mt-5">
+            <div class="logos-slider-container">
+                <img
+                    src="{% static 'images/slider/1.png' %}" />
+                <img
+                    src="{% static 'images/slider/2.png' %}" />
+                <img
+                    src="{% static 'images/slider/3.png' %}" />
+                <img
+                    src="{% static 'images/slider/4.png' %}" />
+                <img
+                    src="{% static 'images/slider/5.png' %}" />
+                <img
+                    src="{% static 'images/slider/1.png' %}" />
+                <img
+                    src="{% static 'images/slider/2.png' %}" />
+                <img
+                    src="{% static 'images/slider/3.png' %}" />
+                <img
+                    src="{% static 'images/slider/4.png' %}" />
+                <img
+                    src="{% static 'images/slider/5.png' %}" />
+            </div>
+
+            <div class="logos-slider-container">
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/1b5efb6e18709f345d9df2d515ef94ff/AMBOSS_Kliniklizenz_Vinzenz-Gruppe-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/baa838917cbc8d345518f3e132bc8fd7/AMBOSS_Kliniklizenz_Universita%CC%88tsklinikum-Bonn-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/cd3fd64c28d1eaa45dabe4d8030cafa4/AMBOSS_Kliniklizenz_Uniklinikum-Salzburg-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/b5bc29f12bc44a3479e1f5a7a880e5eb/AMBOSS_Kliniklizenz_Rems-Murr-Kliniken-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/5a744744b6aabec44952fe173ad803b3/AMBOSS_Kliniklizenz_Klinikum-Wolfsburg-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/9b08a88ad97780c4ed8c8770043be668/AMBOSS_Kliniklizenz_Klinikum-Brandenburg-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/626e09169400efb489aa78be3b504e62/drk-logo2.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/8fe266d7a9511b84ddf573354fa7a6d9/AMBOSS_Kliniklizenz_Clinotel-1.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/e10134edbc072db485aebf5e5decd94d/AwO.png" />
+                <img
+                    src="https://s3-eu-west-1.amazonaws.com/manus-assets-staging.amboss.com/2021/10/cac79a920d8213d429efbaad8d6854fa/AMBOSS_Kliniklizenz_AMEOS-1.png" />
+            </div>
+        </div>
+    </div>
+    {% include 'include/footer.html' %}

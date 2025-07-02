@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <title>Resume Builder</title>
+</head>
+
+{% include 'include/onlynav.html' %}
+
+<body>
+    {% block data %}
+    <div class="container-fluid text-dark p-5">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="fw-bold text-center"> Resume Builder To Create A Resume That Gets You Hired</h1>
+                <p class="fs-5 mt-3 text-center">Your job starts with a resume, but what about the interview? When you
+                    build your resume, you also get access to 18 powerful career tools. It’s the complete career
+                    toolkit, all in one place. If you’re here, you’re already on the way up.
+                </p>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'makeresume' %}" class="btn btn-outline-primary px-4 py-2 mt-3">Create Resume</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/resumepage.gif' %}"  class="img-fluid w-75 ms-5 pt-5" alt="Resume Builder">
+            </div>
+        </div>
+    </div>
+
+
+    
+    <div class="container-fluid  bg-light  p-5">
+        <div class="row">
+            <div class="col-md-4 px-5">
+                <i class="ri-trophy-line fs-1"></i>
+                <h2>You can clear any interview with this resume builder</h2>
+                <hr>
+                <p class="fs-5">Use our resume maker with its advanced creation tools to tell a professional story that
+                    engages recruiters, hiring managers and even CEOs.</p>
+            </div>
+            <div class="col-md-4 px-5">
+                <i class="ri-pencil-ruler-2-line fs-1"></i>
+                <h2>Resume writeing <br> made easy</h2>
+                <hr>
+                <p class="fs-5">Enhance your resume with expert help today. That’s why our Career Development program
+                    offers personalised resume assistance, crafting unique, visually appealing documents with expert
+                    guidance to highlight your skills and experiences, ensuring you stand out in today’s competitive job
+                    market
+                </p>
+            </div>
+            <div class="col-md-4 px-5">
+                <i class="ri-verified-badge-fill fs-1"></i>
+                <h2> Use the best resume maker as your guide</h2>
+                <hr>
+                <p class="fs-5">Getting that dream job can seem like an impossible task. We’re here to change that. Give
+                    yourself a real advantage with the best online resume maker: created by experts, improved by data,
+                    trusted by millions of professionals.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% include 'include/footer.html' %}
+{% endblock data %}

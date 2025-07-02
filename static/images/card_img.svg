@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64">
+  <defs/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M54 43H10v17h44V43z"/>
+  <path stroke="#00B7CD" stroke-miterlimit="10" d="M54 26H25v17h29V26zM43 25.5V22h8v3.5"/>
+  <path stroke="#00756A" stroke-miterlimit="10" d="M39 9H10v17h29V9zM28 8.5V5h8v3.5M13 8.5V5h8v3.5M13 42.5V39h8v3.5M13.5 56h15M30.5 56h1M13.5 21h7"/>
+</svg>

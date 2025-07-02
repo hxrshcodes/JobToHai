@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: Poppins;
+}
+
+.pricing-cards{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 350px;
+    transition: transform 0.3s;
+    transition: all ease-in 0.5s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border: 5px solid #f7f8fa;
+    background-color: rgb(57, 55, 55);
+    color: white;
+    transition: all ease-in 0.5s;
+    cursor: pointer;
+}
+
+.price {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+@media screen and (max-width:600px) {
+    .card{
+        margin: 5px;
+        width: 250px;
+    }
+    
+}
+
+.btn {
+    background-color: #19191a;
+    color: rgb(254, 249, 249);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.btn:hover {
+    background-color: #ebeef1;
+    color: rgb(12, 11, 11);
+    cursor: pointer;
+}
+
+
+/* slider1 */
+
+.logos-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(90deg,rgba(0,0,0,0) 0,#000 15%,#000 85%,rgba(0,0,0,0) 100%);
+}
+
+.logos-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    animation: slide 30s linear infinite;
+}
+
+.logos-slider-container img {
+  width:150px;
+ max-width: 150px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate3d(0,0,0)
+  }
+  100% {
+    transform: translate3d(-100%,0,0)
+  }
+}

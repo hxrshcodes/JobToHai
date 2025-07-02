@@ -1,0 +1,350 @@
+{% include 'include/base.html' %}
+{% include 'include/header.html' %}
+{% load static %}
+
+    <!-- HERO SECTION -->
+    <div class="container-boot pb-5">
+        <div class="row pt-5">
+            <div class="col-md-6">
+                <h1 class="pt-3 display-5">Welcome To <br> <span style="color: var(--first-color);">JobHai</span>
+                    community </h1>
+                <span>
+                    At Jobhai, we believe that every job seeker deserves a chance to find their dream job. Our platform
+                    connects talented individuals with leading employers across various industries. Whether you’re a
+                    fresh graduate, an experienced professional, or looking to switch careers, Jobhai offers a
+                    comprehensive suite of resources to help you succeed. <br><br>
+
+                    <h3 class="fw-bold">Why Choose Jobhai?</h3>
+                    <p>User-Friendly Interface: Our intuitive platform makes job searching easy and efficient. Filter
+                        jobs
+                        by location, industry, salary, and more to find the perfect match.</p>
+
+                    <p>Career Resources: Access valuable tools, including resume tips, interview preparation guides, and
+                        career advice from industry experts to enhance your job search.</p>
+                </span>
+                <a href="#" class="btn btn-outline-primary px-4">Get Hired</a>
+            </div>
+            <div class="col-md-6">
+                <div class="mt-5"><img src="{% static 'images/indexpage.gif' %}" alt="" class="pt-5 img-fluid w-75 mx-auto d-block"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <div class="container-fluid bg-pblue mt-1">
+        <form class="row domain-search ">
+            <div class="container-boot">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2 class="form-title">Find Your <strong>Dream Job</strong></h2>
+                        <p>Search for your dream job now</p>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="search" class="form-control">
+                            <span class="input-group-addon"><input type="submit" value="Search"
+                                    class="btn btn-danger"></span>
+                        </div>
+                        <p><strong>Remote</strong> <strong>MNC</strong> <strong>Freshers</strong>
+                            <strong>Experienced</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- SEARCH BAR ENDS -->
+
+    <!-- COMPANY CARD -->
+    <div class="container-fluid pt-5 pb-5" style="background-color: var(--body-color);">
+        <div class="container-boot">
+            <h3 class="text-center fw-bold">Featured Companies Actively Hiring</h3>
+            <div class="products">
+                <div class="filter">
+                    <button onclick="filterProducts('all')" class="rounded-5">All</button>
+                    <button onclick="filterProducts('it_service')" class="rounded-5">IT services</button>
+                    <button onclick="filterProducts('sales')" class="rounded-5">Sales</button>
+                    <button onclick="filterProducts('marketing')" class="rounded-5">marketing</button>
+                </div>
+            </div>
+            <div class="container-boot">
+                <div class="row d-flex justify-content-evenly">
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product it_service"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Card title</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product it_service"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Card title</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product it_service"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Card title</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product sales"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Sales</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product sales"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Sales</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product sales"
+                        style="border-radius: 5px; max-width: 20rem;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Sales</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product marketing"
+                        style="border-radius: 5px; max-width: 20rem; display: none;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Marketing</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product marketing"
+                        style="border-radius: 5px; max-width: 20rem;  display: none;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Marketing</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-4 bg-white pb-3 mt-4 product marketing"
+                        style="border-radius: 5px; max-width: 20rem;  display: none;">
+                        <img src="static/images/Sign logo.png" class="card-img-top img-fluid" alt="...">
+                        <h5 class="card-title text-center">Marketing</h5>
+                        <p class="card-text text-center"><i class="ri-star-s-fill text-warning">5</i> | <span
+                                style="font-size: smaller;">260 reviews</span></p>
+                        <p style="font-size: smaller;" class="text-center">No.1 Customer Care Solutions Providers.</p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pt-4">
+                    <button class="btn btn-outline-primary rounded-pill">View all Companies</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PREMIUM SERVICE -->
+    <div class="container-boot border border-light mt-5 mb-5 p-3"
+        style="border-radius: 15px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{% static 'images/ff-services-ot.png' %}" alt="" width="150">
+            </div>
+            <div class="col-md-8">
+                <h6 class="pt-2">Accelerate your job search with our services</h6>
+                <p style="font-size: smaller;">
+                    Services to help you get hired, faster: from preparing your CV and cover letter to <br> getting recruiter attention,
+                    finding the right jobs, and more!
+                </p>
+                <div class="premium">
+                    <a href="" class="mt-2 mt-md-0"><i class="ri-flashlight-line mx-2" style="color: var(--first-color);"></i>Resume
+                        writing</a>
+                    <a href="" class="mt-2 mt-md-0"><i class="ri-article-line mx-2" style="color: var(--first-color);"></i>Easy access</a>
+                    <a href="" class="mt-2 mt-md-0"><i class="ri-edit-line mx-2" style="color: var(--first-color);"></i>Resume boost</a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'resume' %}" class="btn btn-outline-primary mt-5">Create Resume</a>
+                <p style="font-size: 10px; color: rgb(75, 70, 70);">*This includes paid services*</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW TO APPLY -->
+    <div class="container-fluid p-5" style="background-image: url(static/images/how-applybg.png); background-size: cover;">
+        <div class="container-boot">
+            <p class="text-center text-danger">APPLY PROCESS</p>
+            <h1 class="text-center text-white">How it works</h1>
+                <div class="row d-flex justify-content-evenly">
+                    <div class="col-md-4 col-sm-12 pb-3 mt-4"
+                        style="border-radius: 5px; max-width: 20rem; background-color: #26317f;">
+                        <div class="text-center pt-4"><i class="ri-search-eye-line display-5 text-white"></i></div>
+                        <h5 class="card-title text-center pt-3 text-white">1. Search a job</h5>
+                        <p style="font-size: medium; color: rgb(189, 191, 192);" class="text-center pt-4">Sorem spsum
+                            dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+
+                    </div>
+                    <div class="col-md-4 col-sm-12 pb-3 mt-4"
+                        style="border-radius: 5px; max-width: 20rem; background-color: #26317f;">
+                        <div class="text-center pt-4"><i class="ri-user-heart-line display-5 text-white"></i></div>
+                        <h5 class="card-title text-center pt-3 text-white">2. Apply for job</h5>
+                        <p style="font-size: medium; color: rgb(189, 191, 192);" class="text-center pt-4">Sorem spsum
+                            dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+
+                    </div>
+                    <div class="col-md-4 col-sm-12 pb-3 mt-4"
+                        style="border-radius: 5px; max-width: 20rem; background-color: #26317f;">
+                        <div class="text-center pt-4"><i class="ri-thumb-up-line display-5 text-white"></i></div>
+                        <h5 class="card-title text-center pt-3 text-white">3. Get your job</h5>
+                        <p style="font-size: medium; color: rgb(189, 191, 192);" class="text-center pt-4">Sorem spsum
+                            dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- RECENT JOBS -->
+    <div class="container-boot p-5">
+        <p class="text-danger pt-5 fs-5 fw-light text-center">Recent Jobs</p>
+        <h1 style="color: var(--first-color);" class="text-center">FEATURED JOBS</h1>
+        <div class="row d-flex justify-content-evenly">
+            <div class="col-md-12 pb-3 mt-4" style="border-radius: 5px; max-width: 60rem; background-color: var(--body-color);">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="static/images/ziggo.png" alt="" width="100" class="img-fluid ps-1 border border-primary mt-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="fw-light mt-3" style="color: var(--first-color);">Digital marketer</h4>
+                        <div class="featured mt-3">
+                            <span style="font-size: smaller;" style="margin-top: 10%;">Creative Agency</span>
+                            <a href=""><i class="ri-map-pin-line"></i> Delhi</a>
+                            <a href="">₹30,000 - ₹40,000</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-primary rounded-pill mt-4">Apply Now</button>
+                        <p class="text-muted mt-4 ms-2" style="font-size: small;">7 Hours Ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pb-3 mt-4" style="border-radius: 5px; max-width: 60rem; background-color: var(--body-color);">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="static/images/ziggo.png" alt="" width="100" class="img-fluid ps-1 border border-primary mt-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="fw-light mt-3" style="color: var(--first-color);">Digital marketer</h4>
+                        <div class="featured mt-3">
+                            <span style="font-size: smaller;" style="margin-top: 10%;">Creative Agency</span>
+                            <a href=""><i class="ri-map-pin-line"></i> Delhi</a>
+                            <a href="">₹30,000 - ₹40,000</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-primary rounded-pill mt-4">Apply Now</button>
+                        <p class="text-muted mt-4 ms-2" style="font-size: small;">7 Hours Ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pb-3 mt-4" style="border-radius: 5px; max-width: 60rem; background-color: var(--body-color);">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="static/images/ziggo.png" alt="" width="100" class="img-fluid ps-1 border border-primary mt-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="fw-light mt-3" style="color: var(--first-color);">Digital marketer</h4>
+                        <div class="featured mt-3">
+                            <span style="font-size: smaller;" style="margin-top: 10%;">Creative Agency</span>
+                            <a href=""><i class="ri-map-pin-line"></i> Delhi</a>
+                            <a href="">₹30,000 - ₹40,000</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-primary rounded-pill mt-4">Apply Now</button>
+                        <p class="text-muted mt-4 ms-2" style="font-size: small;">7 Hours Ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pb-3 mt-4" style="border-radius: 5px; max-width: 60rem; background-color: var(--body-color);">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="static/images/ziggo.png" alt="" width="100" class="img-fluid ps-1 border border-primary mt-3">
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="fw-light mt-3" style="color: var(--first-color);">Digital marketer</h4>
+                        <div class="featured mt-3">
+                            <span style="font-size: smaller;" style="margin-top: 10%;">Creative Agency</span>
+                            <a href=""><i class="ri-map-pin-line"></i> Delhi</a>
+                            <a href="">₹30,000 - ₹40,000</a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-primary rounded-pill mt-4">Apply Now</button>
+                        <p class="text-muted mt-4 ms-2" style="font-size: small;">7 Hours Ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    {% include 'include/footer.html' %}
+    <script>
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            let visibleCount = 0;
+
+            products.forEach(product => {
+                if (category === 'all') {
+                    // Show only the first 6 products
+                    if (visibleCount < 6) {
+                        product.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        product.style.display = 'none';
+                    }
+                } else {
+                    // Show products based on category
+                    if (product.classList.contains(category)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
