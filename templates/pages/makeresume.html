@@ -33,7 +33,6 @@
                                 <form action="{% url 'makeresume' %}" class="cv-form bg-light p-5" id="cv-form"
                                     method="post">
                                     {% csrf_token %}
-                                    <h1 class="text-center display-5 fw-semibold">Resume Builder</h1>
                                     <div class="cv-form-blk">
                                         <div class="cv-form-row-title">
                                             <h3>Personal Information</h3>
@@ -367,7 +366,6 @@
                     </section>
 
                     <section id="preview-sc" class="print_area">
-                        <h2 class="text-center fw-semibold">Review Your Resume</h2>
                         <div class="container">
                             <div class="preview-cnt">
                                 <div class="preview-cnt-l bg-green text-white">
@@ -522,12 +520,7 @@
 
     </script>
 
-
-    <!--  ===============================  PREVIEW  ===============================  -->
-    <section id="preview-sc" class="print_area">
-        <h2 class="text-center fw-semibold">Review Your Resume</h2>
-        <!--  (preview markup kept exactly as supplied)  -->
-    </section>
+    <button class="btn btn-primary print-only-btn no-print">Print Resume</button>
 
     <!--  ===============================  SCRIPT  ===============================  -->
     <script>
@@ -544,7 +537,7 @@
         function updatePreview() {
             const f = document.getElementById('cv-form');
 
-            // 1. Personal info ---------------------------------------------------------
+            // 1. Personal info
             const fullname = [f.firstname.value, f.middlename.value, f.lastname.value]
                 .filter(Boolean).join(' ');
             document.getElementById('fullname_dsp').textContent = fullname;
@@ -554,7 +547,7 @@
             document.getElementById('address_dsp').textContent = f.address.value;
             document.getElementById('summary_dsp').textContent = f.summary.value;
 
-            // 2. Skills ---------------------------------------------------------------
+            // 2. Skills
             const skillsWrap = document.getElementById('skills_dsp');
             skillsWrap.innerHTML = '';
             f.querySelectorAll('input[name="skill"]').forEach(inp => {
@@ -565,7 +558,7 @@
                 }
             });
 
-            // 3. Achievements ---------------------------------------------------------
+            // 3. Achievements
             const achWrap = document.getElementById('achievements_dsp');
             achWrap.innerHTML = '';
             const titles = f.querySelectorAll('input[name="achieve_title"]');
@@ -578,7 +571,7 @@
                 }
             });
 
-            // 4. Experience -----------------------------------------------------------
+            // 4. Experience
             const expWrap = document.getElementById('experiences_dsp');
             expWrap.innerHTML = '';
             f.querySelectorAll('input[name="exp_title"]').forEach((t, i) => {
@@ -594,7 +587,7 @@
                 }
             });
 
-            // 5. Education ------------------------------------------------------------
+            // 5. Education
             const eduWrap = document.getElementById('educations_dsp');
             eduWrap.innerHTML = '';
             f.querySelectorAll('input[name="edu_school"]').forEach((sch, i) => {
@@ -610,7 +603,7 @@
                 }
             });
 
-            // 6. Projects -------------------------------------------------------------
+            // 6. Projects
             const projWrap = document.getElementById('projects_dsp');
             projWrap.innerHTML = '';
             f.querySelectorAll('input[name="proj_title"]').forEach((title, i) => {
@@ -637,18 +630,117 @@
             }).from(element).save();
         }
 
+        /* ---------- PRINT PREVIEW (Bootstrap Friendly) ---------- */
+        function printPreview() {
+            updatePreview();
+            const printContents = document.getElementById('preview-sc').innerHTML;
+            const printWindow = window.open('', '', 'height=800,width=600');
+
+            printWindow.document.write(`
+        <html>
+            <head>
+                <title>Gegbyte Resume</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+                <style>
+                    body {
+                        padding: 2rem;
+                        font-family: 'Segoe UI', sans-serif;
+                        color: #000;
+                    }
+                    .preview-cnt {
+                        display: grid;
+                        grid-template-columns: 32% auto;
+                        gap: 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    }
+                    .preview-cnt-l, .preview-cnt-r {
+                        padding: 2rem;
+                    }
+                    .preview-image img {
+                        width: 100px;
+                        height: 100px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                    .preview-item-name {
+                        font-size: 22px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin: 1rem 0;
+                        position: relative;
+                    }
+                    .preview-item-name::after {
+                        content: "";
+                        width: 40px;
+                        height: 2px;
+                        background: #333;
+                        position: absolute;
+                        bottom: -10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    .preview-blk-title h3 {
+                        font-size: 16px;
+                        text-transform: uppercase;
+                        border-bottom: 1px solid #ccc;
+                        padding-bottom: 4px;
+                        margin-bottom: 8px;
+                    }
+                    .preview-item {
+                        font-size: 14px;
+                        margin: 5px 0;
+                    }
+                    .skills-items div {
+                        display: inline-block;
+                        background-color: #f0f0f0;
+                        padding: 4px 8px;
+                        margin: 3px;
+                        border-radius: 4px;
+                        font-size: 13px;
+                    }
+                    * {
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                    }
+                </style>
+            </head>
+            <body>
+                ${printContents}
+            </body>
+        </html>
+    `);
+
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        }
+
+
         /* ----------  EVENT LISTENERS  ---------- */
         const form = document.getElementById('cv-form');
         form.addEventListener('input', updatePreview);
         form.addEventListener('change', updatePreview);
+
         document.querySelector('.print-btn').addEventListener('click', function (e) {
-            e.preventDefault();   // prevent Django post
+            e.preventDefault();
             downloadPDF();
         });
 
-        // initialise preview once DOM ready
+        document.querySelector('.print-only-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            printPreview();
+        });
+
+        // Initialise preview on page load
         document.addEventListener('DOMContentLoaded', updatePreview);
     </script>
+
 
 </body>
 
