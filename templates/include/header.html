@@ -17,7 +17,7 @@
                 <li>
                     <a href="{% url 'index' %}" class="nav__link">Home</a>
                 </li>
-
+                
                 <!-- DROPDOWN 1 -->
                 <li class="dropdown__item">
                     <div class="nav__link dropdown__button">
@@ -317,7 +317,7 @@
                                 <ul class="dropdown__list">
                                     {% if request.session.role == 'Candidate' %}
                                     <li>
-                                        <a href="#" class="dropdown__link">Profile</a>
+                                        <a href="{% url 'profile' %}" class="dropdown__link">Profile</a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">View Resume</a>

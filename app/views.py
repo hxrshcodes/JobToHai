@@ -113,44 +113,39 @@ def makeresume(request):
 
 def signup_page(request):
     if request.method == "POST":
-        if request.POST['role']=="Candidate":
-            role = request.POST['role']
-            fname = request.POST['name']
-            email = request.POST['email']
-            password = request.POST['password']
-            cpassword = request.POST['cpassword']
+        role = request.POST.get('role')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        cpassword = request.POST.get('cpassword')
 
-            user = UserMaster.objects.filter(email=email)
+        # Role must be selected
+        if not role:
+            message = "Please select your role!"
+            return render(request, "loginsystem/signup.html", {'msg': message})
 
-            if user :
-                message = "User already exist!!"
-                return render(request,"loginsystem/signup.html",{'msg':message})
-            else:
-                newuser = UserMaster.objects.create(role=role,email=email,password=password)
-                newcand=Candidate.objects.create(user_id=newuser,name=fname)
-                return redirect('login')
+        # Check if passwords match
+        if password != cpassword:
+            message = "Passwords do not match!"
+            return render(request, "loginsystem/signup.html", {'msg': message})
 
-        elif request.POST['role']=="Company":
-            role = request.POST['role']
-            fname = request.POST['name']
-            email = request.POST['email']
-            password = request.POST['password']
-            cpassword = request.POST['cpassword']
+        # Check if user already exists
+        if UserMaster.objects.filter(email=email).exists():
+            message = "User already exists!"
+            return render(request, "loginsystem/signup.html", {'msg': message})
 
-            user = UserMaster.objects.filter(email=email)
+        # Create user and role-specific profile
+        new_user = UserMaster.objects.create(role=role, email=email, password=password)
 
-            if user :
-                message = "User already exist!!"
-                return render(request,"loginsystem/signup.html",{'msg':message})
-            else:
-                newuser = UserMaster.objects.create(role=role,email=email,password=password)
-                newcand=Company.objects.create(user_id=newuser,name=fname)
-                return redirect('login')
-        else:
-            message = "Please Select Your role!"
-            return render(request,"loginsystem/signup.html",{'msg':message})
+        if role == "Candidate":
+            Candidate.objects.create(user_id=new_user, name=name)
+        elif role == "Company":
+            Company.objects.create(user_id=new_user, name=name)
+
+        return redirect('login')  # or show success message
     else:
-        return render(request,"loginsystem/signup.html")
+        return render(request, "loginsystem/signup.html")
+
     
 def LogInUser(request):
             if request.method == "POST":
@@ -210,3 +205,25 @@ def user_logout(request,pk):
 def post_job(request):
     return render(request, 'pages/post_job.html')
 
+def myprofile(request):
+    return render(request, 'pages/myprofile.html')
+
+
+# Profile
+
+def profile_page(request):
+    if 'id' in request.session:
+        name = request.session.get('name')
+        email = request.session.get('email')
+        role = request.session.get('role')
+
+        print("Fetched from session:", name, email, role)  # debugging
+
+        return render(request, 'profile.html', {
+            'name': name,
+            'email': email,
+            'role': role,
+        })
+     
+    else:
+        return redirect('login')
