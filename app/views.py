@@ -1,7 +1,11 @@
+import random
+from django.conf import settings
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail
 from django.http import HttpResponse
-from .models import *
 from django.contrib.auth import logout
+from .models import UserMaster, Candidate, Company, PersonalInformation
+
 
 
 
@@ -202,11 +206,81 @@ def user_logout(request,pk):
     logout(request)
     return redirect('/')
 
+
 def post_job(request):
     return render(request, 'pages/post_job.html')
 
 def myprofile(request):
     return render(request, 'pages/myprofile.html')
+
+# FORGET PASSWORD
+
+def generate_otp():
+    return str(random.randint(100000, 999999))
+
+def forgot_password(request):
+    if request.method == "POST":
+        email = request.POST['email']
+        try:
+            user = UserMaster.objects.get(email=email)
+            otp = generate_otp()
+            request.session['reset_email'] = email
+            request.session['otp'] = otp
+
+            # Send OTP via email
+            send_mail(
+                subject="Your OTP for Password Reset",
+                message=f"Hi, your OTP is: {otp}",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+
+            return redirect('verify_otp')
+
+        except UserMaster.DoesNotExist:
+            return render(request, "loginsystem/forgot_password.html", {"msg": "Email not registered"})
+    return render(request, "loginsystem/forgot_password.html")
+
+def verify_otp(request):
+    if request.method == "POST":
+        entered_otp = request.POST['otp']
+        if entered_otp == request.session.get('otp'):
+            return redirect('reset_password')
+        else:
+            return render(request, "loginsystem/verify_otp.html", {"msg": "Invalid OTP"})
+    return render(request, "loginsystem/verify_otp.html")
+
+def reset_password(request):
+    if request.method == "POST":
+        pwd = request.POST.get('password')
+        cpwd = request.POST.get('confirm_password')
+
+        if not pwd or not cpwd:
+            return render(request, "loginsystem/reset_password.html", {"msg": "Please fill in both fields"})
+
+        if pwd != cpwd:
+            return render(request, "loginsystem/reset_password.html", {"msg": "Passwords do not match"})
+
+        email = request.session.get('reset_email')
+        if not email:
+            return render(request, "loginsystem/reset_password.html", {"msg": "Session expired. Please restart the reset process."})
+
+        try:
+            user = UserMaster.objects.get(email=email)
+            user.password = pwd  # 🔒 You might consider hashing this in production
+            user.save()
+
+            # Clear session after successful reset
+            request.session.flush()
+            return redirect('login')
+
+        except UserMaster.DoesNotExist:
+            return render(request, "loginsystem/reset_password.html", {"msg": "User not found"})
+
+    return render(request, "loginsystem/reset_password.html")
+
+
 
 
 # Profile

@@ -17,4 +17,9 @@ urlpatterns = [
     path('logout/<int:pk>', user_logout, name='logout'),
     path('post_job/', post_job, name='post_job'),
     path('myprofile/', myprofile, name='profile'),
+
+    # FORGET PASSWORD
+    path('forgot-password/', forgot_password, name='forgot_password'),
+    path('verify-otp/', verify_otp, name='verify_otp'),
+    path('reset-password/', reset_password, name='reset_password'),
 ]
